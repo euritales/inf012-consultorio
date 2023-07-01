@@ -147,20 +147,21 @@ http://localhost:8080/api/medicos/{id}
 
 ```
 {
-"nome": "Dr. Nome",
-"email": "nome@exemplo.com",
-"telefone": "123456789",
-"crm": "12345",
-"especialidade": "ORTOPEDIA",
-"status": true,
-"endereco": {
+  "nome": "Dr. Andreia Lemos",
+  "email": "dea@example.com",
+  "telefone": "321323287",
+  "crm": "13123",
+  "especialidade": "DERMATOLOGIA",
+  "status": true,
+  "endereco": {
     "logradouro": "Rua A",
     "numero": "123",
-    "complemento": "Apto 1",
+    "complemento": "",
     "bairro": "Centro",
-    "cidade": "Cidade",
-    "uf": "XX",
+    "cidade": "São Paulo",
+    "uf": "SP",
     "cep": "12345-678"
+  }
 }
 ```
 
@@ -186,20 +187,20 @@ http://localhost:8080/api/pacientes/{id}
 
 ```
 {
-"nome": "AFulano",
-"email": "nome@exemplo.com",
-"telefone": "123456789",
-"cpf": "12345678901",
-"status": true,
-"endereco": {
-    "logradouro": "Rua X",
-    "numero": "789",
-    "complemento": "Casa 1",
-    "bairro": "Centro",
-    "cidade": "Cidade",
-    "uf": "XX",
-    "cep": "54321-098"
-}
+	"nome": "Fabio Souza",
+	"email": "fabinho@example.com",
+	"telefone": "987654321",
+	"cpf": "98765432101",
+	"status": true,
+	"endereco": {
+		"logradouro": "Rua Y",
+		"numero": "987",
+		"complemento": "Casa 2",
+		"bairro": "Centro",
+		"cidade": "Cidade",
+		"uf": "XX",
+		"cep": "09876-543"
+	}
 }
 ```
 
@@ -222,45 +223,44 @@ http://localhost:8080/api/consultas/{id}
 
 ```
 {
-"id":1{
 "paciente": {
-    "id": 1,
-    "nome": "AFulano",
-    "email": "exemplo@nome.com",
-    "telefone": "123456789",
-    "cpf": "12345678901",
-    "status": false,
-    "endereco": {
-        "logradouro": "Rua X",
-        "numero": "789",
-        "complemento": "Casa 1",
-        "bairro": "Centro",
-        "cidade": "Cidade",
-        "uf": "XX",
-        "cep": "54321-098"
-    }
-},
-"medico": {
-    "id": 1,
-    "nome": "AAADr. João",
-    "email": "nome@exemplo.com",
-    "telefone": "123456789",
-    "crm": "12345",
-    "especialidade": "Ortopedia",
-    "status": false,
-    "endereco": {
-        "logradouro": "Rua A",
-        "numero": "123",
-        "complemento": "Apto 1",
-        "bairro": "Centro",
-        "cidade": "São Paulo",
-        "uf": "SP",
-        "cep": "12345-678"
-    }
-},
-"dataHora": "2023-06-21T10:00:00",
-"status": true,
-"cancelamento": ""
+	"id": 7,
+	"nome": "João Silva",
+	"email": "joao@example.com",
+	"telefone": "123456789",
+	"cpf": "12345678901",
+	"status": true,
+	"endereco": {
+		"logradouro": "Rua Y",
+		"numero": "123",
+		"complemento": "Apto 4",
+		"bairro": "Bairro",
+		"cidade": "Cidade",
+		"uf": "XX",
+		"cep": "12345-678"
+		}
+	},
+	"medico": {
+		"id": 1,
+		"nome": "JDra. Rafaela",
+		"email": "rafaela@example.com",
+		"telefone": "654321987",
+		"crm": "34567",
+		"especialidade": "ORTOPEDIA",
+		"status": true,
+		"endereco": {
+			"logradouro": "Avenida C",
+			"numero": "987",
+			"complemento": "Bloco 3",
+			"bairro": "Centro",
+			"cidade": "Cidade",
+			"uf": "XX",
+			"cep": "34567-890"
+		}
+	},
+	"dataHora": "2023-07-21T14:00:00",
+	"status": true,
+	"cancelamento": null
 }
 ```
 
