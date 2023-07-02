@@ -25,11 +25,8 @@ public class PacienteEntity {
     private String telefone;
     @NotNull
     private String cpf;
-    @NotNull
     private boolean status;
     @NotNull
     @Embedded
     private Endereco endereco;
-
 }
-

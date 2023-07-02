@@ -1,5 +1,6 @@
 package com.example.Consultorio.dto;
 
+import com.example.Consultorio.entities.Especialidade;
 import com.example.Consultorio.entities.MedicoEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +13,7 @@ public class MedicoDTO {
     private String nome;
     private String email;
     private String crm;
-    private String especialidade;
+    private Especialidade especialidade;
 
     public static MedicoDTO fromEntity(MedicoEntity medicoEntity) {
         ModelMapper modelMapper = new ModelMapper();

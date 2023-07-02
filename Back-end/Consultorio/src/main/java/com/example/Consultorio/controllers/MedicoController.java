@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/medicos")
@@ -18,20 +20,21 @@ public class MedicoController {
     @Autowired
     private MedicoService medicoService;
 
+    //#EndPoints-Futuro
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<MedicoEntity>> listarMedicos() {
         return ResponseEntity.ok(medicoService.listarMedicos());
     }
 
-    @GetMapping
+    //#EndPoints-Futuro
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Page<MedicoDTO>> listarMedicosPorPaginacao(@RequestParam(defaultValue = "0") int pagina) {
-        Page<MedicoDTO> medicoDTO = medicoService.listarMedicosPorPaginacao(pagina);
-        return ResponseEntity.ok(medicoDTO);
+    public ResponseEntity<Optional<MedicoEntity>> buscarPaciente(@PathVariable Long id) {
+        return ResponseEntity.ok(medicoService.listarMedicosPorId(id));
     }
 
-    @GetMapping("/ativos")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Page<MedicoDTO>> listarMedicosAtivos(@RequestParam(defaultValue = "0") int pagina) {
         Page<MedicoDTO> medicoDTO = medicoService.listarMedicosAtivos(pagina);

@@ -30,6 +30,6 @@ public class ConsultaEntity {
     @NotNull
     private LocalDateTime dataHora;
     private boolean status = true;
+//    @Enumerated(EnumType.STRING)
     private String cancelamento;
 }
-

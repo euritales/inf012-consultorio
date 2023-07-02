@@ -14,21 +14,27 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MedicoService {
     @Autowired
-    private  MedicoRepository medicoRepository;
+    private MedicoRepository medicoRepository;
 
-
+    //#EndPoints-Futuro
     public List<MedicoEntity> listarMedicos() {
         List<MedicoEntity> medicos = medicoRepository.findAll();
         return medicos;
+
     }
-    public Page<MedicoDTO> listarMedicosPorPaginacao(int pagina) {
-        Pageable pageable = PageRequest.of(pagina, 10, Sort.by("nome").ascending());
-        Page<MedicoEntity> medicoPage = medicoRepository.findAllByOrderByNomeAsc(pageable);
-        return medicoPage.map(MedicoDTO::fromEntity);
+    //#EndPoints-Futuro
+    public Optional<MedicoEntity> listarMedicosPorId(Long id) {
+        Optional<MedicoEntity> medicoEntity = medicoRepository.findByIdAndStatusTrue(id);
+        if(medicoEntity.isPresent()){
+            return Optional.of(medicoEntity.get());
+        }else{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Medico não encontrado");
+        }
     }
     public Page<MedicoDTO> listarMedicosAtivos(int pagina) {
         Pageable pageable = PageRequest.of(pagina, 10, Sort.by("nome").ascending());
@@ -48,8 +54,13 @@ public class MedicoService {
         MedicoEntity medico = medicoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Médico não encontrado"));
 
+        if(!medico.isStatus()){
+            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Medico não encontrado");
+        }
+
         if (!medicoEntity.getEmail().equals(medico.getEmail()) ||
                 !medicoEntity.getCrm().equals(medico.getCrm()) ||
+                !medicoEntity.isStatus()||
                 !medicoEntity.getEspecialidade().equals(medico.getEspecialidade())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Campos inválidos para atualização");
         }
@@ -62,57 +73,15 @@ public class MedicoService {
     }
 
     public void softDeleteMedico(Long id) {
-       medicoRepository.findById(id).map(medicoAtual ->{
-           medicoAtual.setStatus(false);
-           medicoRepository.save(medicoAtual);
-           return new ResponseStatusException(HttpStatus.OK);
-       }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Medico não encontrado"));
+        MedicoEntity medico = medicoRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Medico não encontrado"));
+        if (!medico.isStatus()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Medico inativo");
+        }
+        medico.setStatus(false);
+        medicoRepository.save(medico);
+        new ResponseStatusException(HttpStatus.OK);
+        return;
     }
 
-
-//    public MedicoDTO cadastrarMedico(MedicoDTO medicoDTO) {
-//        MedicoEntity medico = medicoDTO.toEntity(medicoDTO);
-//        System.out.println(medico.getEnderecoEntity());
-//        medico.setStatus(true); // Definir status como ativo por padrão
-//        MedicoEntity novoMedico = medicoRepository.save(medico);
-//        System.out.println(novoMedico.getEnderecoEntity());
-//        return medicoDTO.fromEntity(novoMedico);
-//    }
-
-
-
-
-
-
-//    public List<MedicoDTO> listarMedicos() {
-//        return medicoRepository.findAll().stream()
-//                .map(MedicoDTO::fromEntity)
-//                .collect(Collectors.toList());
-//    }
-
-
-//    public MedicoDTO cadastrarMedico(MedicoDTO medicoDTO) {
-//        MedicoEntity medicoEntity = MedicoDTO.fromEntity(medicoDTO);
-//        MedicoEntity savedMedico = medicoRepository.save(medicoEntity);
-//        return MedicoDTO.toDTO(savedMedico);
-//    }
-//
-//
-//
-//    public MedicoDTO atualizarMedico(Long id, MedicoDTO medicoDTO) {
-//        MedicoEntity medicoExistente = medicoRepository.findById(id)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Médico não encontrado"));
-//
-//        MedicoDTO.fromEntity(medicoDTO, medicoExistente);
-//        MedicoEntity savedMedico = medicoRepository.save(medicoExistente);
-//        return MedicoDTO.toDTO(savedMedico);
-//    }
-//
-//    public void excluirMedico(Long id) {
-//        MedicoEntity medicoExistente = medicoRepository.findById(id)
-//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Médico não encontrado"));
-//
-//        medicoRepository.delete(medicoExistente);
-//    }
 }
