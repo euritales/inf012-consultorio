@@ -17,26 +17,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PacienteService {
     @Autowired
     private PacienteRepository pacienteRepository;
 
-    //#EndPoints-Futuro
+
     public List<PacienteEntity> listarPacientes() {
         List<PacienteEntity> pacientes = pacienteRepository.findAll();
         return pacientes;
     }
-    //#EndPoints-Futuro
-    public Optional<PacienteEntity> listarPacientesPorId(Long id) {
-        Optional<PacienteEntity> paciente = pacienteRepository.findByIdAndStatusTrue(id);
-        if(paciente.isPresent()){
-            return Optional.of(paciente.get());
-        }else{
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado");
-        }
+    public Page<PacienteDTO> listarPacientesPorPaginacao(int pagina) {
+        Pageable pageable = PageRequest.of(pagina, 10, Sort.by("nome").ascending());
+        Page<PacienteEntity> medicoPage = pacienteRepository.findAllByStatusTrueOrderByNomeAsc(pageable);
+        return medicoPage.map(PacienteDTO::fromEntity);
     }
     public Page<PacienteDTO> listarPacientesAtivos(int pagina) {
         Pageable pageable = PageRequest.of(pagina, 10, Sort.by("nome").ascending());
@@ -51,20 +46,13 @@ public class PacienteService {
         PacienteEntity paciente = pacienteRepository.save(pacienteEntity);
         return PacienteDTO.fromEntity(paciente);
     }
-
     public PacienteDTO atualizarPaciente(Long id, PacienteEntity pacienteEntity) {
         Assert.isNull(pacienteEntity.getId(), "Não foi possivel salvar este registro");
         PacienteEntity paciente = pacienteRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado"));
 
-        if(!paciente.isStatus()){
-            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado");
-        }
-
         if (!pacienteEntity.getEmail().equals(paciente.getEmail()) ||
-                !pacienteEntity.getCpf().equals(paciente.getCpf()) ||
-                !pacienteEntity.isStatus())
-        {
+                !pacienteEntity.getCpf().equals(paciente.getCpf())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Campos inválidos para atualização");
         }
 
@@ -76,14 +64,12 @@ public class PacienteService {
     }
 
     public void softDeletePaciente(Long id) {
-        PacienteEntity paciente = pacienteRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado"));
-        if (!paciente.isStatus()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Paciente inativo");
-        }
-        paciente.setStatus(false);
-        pacienteRepository.save(paciente);
-        new ResponseStatusException(HttpStatus.OK);
-        return;
+       pacienteRepository.findById(id).map(pacienteAtual ->{
+           pacienteAtual.setStatus(false);
+           pacienteRepository.save(pacienteAtual);
+           return new ResponseStatusException(HttpStatus.OK);
+       }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Paciente não encontrado"));
     }
+
 }

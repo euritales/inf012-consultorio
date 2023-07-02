@@ -1,6 +1,5 @@
 package com.example.Consultorio.dto;
 
-import com.example.Consultorio.entities.Cancelamento;
 import com.example.Consultorio.entities.ConsultaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +15,6 @@ public class ConsultaDTO {
     private PacienteDTO paciente;
     private MedicoDTO medico;
     private LocalDateTime dataHora;
-    private Cancelamento cancelamento;
 
     public static ConsultaDTO fromEntity(ConsultaEntity consultaEntity) {
         ModelMapper modelMapper = new ModelMapper();

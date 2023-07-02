@@ -13,4 +13,5 @@ import java.util.Optional;
 public interface PacienteRepository extends JpaRepository<PacienteEntity, Long> {
     Page<PacienteEntity> findAllByStatusTrueOrderByNomeAsc(Pageable pageable);
     Optional<PacienteEntity> findByIdAndStatusTrue(Long id);
+
 }

@@ -23,11 +23,11 @@ public class MedicoEntity {
     @NotNull
     private String crm;
     @NotNull
-    @Enumerated(EnumType.STRING)
-    private Especialidade especialidade;
+    private String especialidade;
     @NotNull
     private boolean status;
     @NotNull
     @Embedded
     private Endereco endereco;
 }
+
