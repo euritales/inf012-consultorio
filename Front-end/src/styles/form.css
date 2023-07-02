@@ -1,0 +1,35 @@
+body {
+  background: #e5e5e5;
+}
+
+.container-form{
+  display: flex;
+  border: 3px solid red;
+  height: 800px;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-unic-input {
+  display: flex;
+  flex-direction: column;
+}
+.container-unic-input input {
+  width: 512px;
+}
+
+.container-double-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 512px;
+}
+.container-double-form input {
+  width: 240px;
+}
+.container-double-form div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+select {
+    padding: 12px 29px 13px;
+    border-radius: 8px;
+    font-size: 12px;
+    padding-left: 10px;
+    color: #868686;
+  }
