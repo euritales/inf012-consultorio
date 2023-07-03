@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -52,19 +53,17 @@ public class PacienteService {
         return PacienteDTO.fromEntity(paciente);
     }
 
-    public PacienteDTO atualizarPaciente(Long id, PacienteEntity pacienteEntity) {
-        Assert.isNull(pacienteEntity.getId(), "Não foi possivel salvar este registro");
+    public ResponseEntity<Void> atualizarPaciente(Long id, PacienteEntity pacienteEntity) {
         PacienteEntity paciente = pacienteRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado"));
 
-        if(!paciente.isStatus()){
-            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado");
+        if (!paciente.isStatus()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado");
         }
 
         if (!pacienteEntity.getEmail().equals(paciente.getEmail()) ||
                 !pacienteEntity.getCpf().equals(paciente.getCpf()) ||
-                !pacienteEntity.isStatus())
-        {
+                !pacienteEntity.isStatus()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Campos inválidos para atualização");
         }
 
@@ -72,8 +71,10 @@ public class PacienteService {
         paciente.setTelefone(pacienteEntity.getTelefone());
         paciente.setEndereco(pacienteEntity.getEndereco());
         pacienteRepository.save(paciente);
-        return null;
+
+        return ResponseEntity.ok().build();
     }
+
 
     public void softDeletePaciente(Long id) {
         PacienteEntity paciente = pacienteRepository.findById(id)

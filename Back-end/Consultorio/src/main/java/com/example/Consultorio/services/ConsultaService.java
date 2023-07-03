@@ -110,9 +110,10 @@ public class ConsultaService {
         if (LocalDateTime.now().plusHours(24).isAfter( consulta.getDataHora())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A consulta só pode ser cancelada com ao menos 24 horas de antecedência.");
         }
-//        if(consulta.getCancelamento() == ''){
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Motivo de cancelamento inválido.Informe o motivo do cancelamento: PACIENTE_DESISTIU, MEDICO_CANCELOU, OUTROS");
+//        if (consulta.getCancelamento() == null) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Motivo de cancelamento inválido. Informe o motivo do cancelamento: PACIENTE DESISTIU, MEDICO CANCELOU, OUTROS");
 //        }
+
 
         consulta.setStatus(false);
         consulta.setCancelamento(cancelamento);

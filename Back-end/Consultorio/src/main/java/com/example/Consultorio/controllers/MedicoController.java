@@ -2,6 +2,7 @@ package com.example.Consultorio.controllers;
 
 import com.example.Consultorio.dto.MedicoDTO;
 import com.example.Consultorio.entities.MedicoEntity;
+import com.example.Consultorio.entities.PacienteEntity;
 import com.example.Consultorio.services.MedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -44,15 +45,20 @@ public class MedicoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity cadastrarMedico(@RequestBody MedicoEntity medicoEntity) {
-        MedicoDTO novoMedico = medicoService.cadastrarMedico(medicoEntity);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoMedico);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+//    @PutMapping("/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public ResponseEntity atualizarMedico(@PathVariable Long id, @RequestBody MedicoEntity medicoEntity) {
+//        medicoService.atualizarMedico(id, medicoEntity);
+//        return ResponseEntity.noContent().build();
+//    }
+
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity atualizarMedico(@PathVariable Long id, @RequestBody MedicoEntity medicoEntity) {
-        return ResponseEntity.ok(medicoService.atualizarMedico(id, medicoEntity));
+    public ResponseEntity atualizarPaciente(@PathVariable Long id, @RequestBody MedicoEntity medicoEntity) {
+        return ResponseEntity.ok( medicoService.atualizarMedico(id, medicoEntity));
     }
-
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
