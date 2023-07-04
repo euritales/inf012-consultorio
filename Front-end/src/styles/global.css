@@ -1,12 +1,85 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.box-principal{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  height: 100vh;
+}
+
+.box-secundario {
+  display: flex;
+  padding: 30px 190px;
+  height: 70%;
+  width: 70%;
+  overflow: auto;
+  align-items: center;
+  justify-content: space-between;
+  background-color: aliceblue;
+}
+
+.display-flex{
+  display: flex;
+}
+
+.flex-cl{
+  flex-direction: column;
+}
+
+.flex-row{
+  flex-direction: row;
+}
+
+.align-center{
+  align-items: center;
+}
+.align-start{
+  align-items: start;
+}
+
+.content-start{
+  justify-content: start;
+}
+
+.content-center{
+  justify-content: center;
+}
+
+.align-stretch{
+  align-items: stretch;
+}
+.space-between{
+  justify-content: space-between;
+}
+.width{
+  width: 100%;
+}
+
+.mg-x-p{
+  margin: 0 5px;
+}
+
+.mg-y-p{
+  margin: 5px 0;
+}
+.mg-x-m{
+  margin: 0 10px;
+}
+
+.mg-y-m{
+  margin: 10px 0;
+}

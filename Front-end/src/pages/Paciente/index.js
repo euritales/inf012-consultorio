@@ -38,21 +38,25 @@ export default function Paciente(){
   }, []);
 
 return (
-  <>
-  <ul>
-    <li><NavLink to="/paciente/cadastro" exact className="btn-redirec">Cadastrar Paciente</NavLink></li>
-  </ul>
-  <div className="consultaBox">
-    {exibirDados.map((paciente, index) => (
-      <PacienteDetalhes key={index} paciente={paciente} />
-    ))}
-  </div>
-  <ReactPaginate
+  <div className="box-principal flex-cl align-center content-start ">
+    <div className="display-flex align-stretch width "> 
+      <button >
+          <NavLink className="btn btn-white" to="/paciente/cadastro" exact >Cadastrar Paciente</NavLink>
+          </button>
+      </div>
+      <div className="box-secundario flex-cl">
+        {exibirDados.map((paciente, index) => (
+          <PacienteDetalhes key={index} paciente={paciente} />
+        ))}
+    </div>
+    <div className="btn-paginacao flex flex-row"> 
+    <ReactPaginate
     previousLabel={"<<Anterior"}
     nextLabel={"Próximo>>"}
     pageCount={pageCount}
     onPageChange={handlePaginacao}
-  />
-</>
+    />
+    </div>
+  </div>
 );
 }

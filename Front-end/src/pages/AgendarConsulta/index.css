@@ -33,3 +33,13 @@
     border-radius: 16px;
   }
   
+
+  .btn-confirma{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    text-align: center;
+    padding: 2px 40px;
+    border-radius: 10px;
+    font-weight: 600;
+  }

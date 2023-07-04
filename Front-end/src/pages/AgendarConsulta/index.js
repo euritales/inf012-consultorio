@@ -77,11 +77,12 @@ const AgendarConsulta = () => {
     };
     
     return (
+  <div className="box-principal flex-cl align-center content-start ">
     <div className="container-form-paciente">
       <div className="container-register-paciente">
-      <form className="patient-form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="patient-form flex" onSubmit={handleSubmit(onSubmit)}>
 
-      <div className="container-unic-input ">
+      <div className="container-unic-input mg-x-m">
             <label htmlFor="pacientes">Pacientes</label>
             <select
               {...register("paciente")}
@@ -101,7 +102,7 @@ const AgendarConsulta = () => {
               ))}
             </select>
           </div>
-          <div className="container-unic-input ">
+          <div className="container-unic-input mg-x-m ">
             <label 
             // style={{ width: '222px',
             // border: '2px, solid black'}}
@@ -123,16 +124,20 @@ const AgendarConsulta = () => {
                 ))}
               </select>
           </div>
-          <label htmlFor="telefone">Data/Hora</label>
+          <div className="container-unic-input mg-x-m">
+
+          <label htmlFor="datetime-local">Data/Hora</label>
           <input type="datetime-local" 
           id="dataHora" 
           style={{ width: '222px'}}
-
           {...register('dataHora', {required: true})} />
-        <button className="btn btn-white" type="submit">Agendar</button>
+      </div>
+
+        <button className="btn-confirma  btn-white " type="submit">Agendar</button>
       </form>
       </div>
       </div>
+    </div>
     );
   };
   

@@ -3,7 +3,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./index.css"
 import ConsultaDetalhes from "../../components/ConsultaDetalhes";
 import api from "../../services/api";
-import './index.css'
 import ReactPaginate from "react-paginate";
 import { NavLink } from "react-router-dom";
 
@@ -37,24 +36,26 @@ const Consulta = () => {
       });
   }, []);
     return(
-      <>
-       <ul>
-          <li><NavLink to="/consulta/cadastro" exact className="btn-redirec">Agendar Consulta</NavLink></li>
-        </ul>
-        <div className="consultaBox">
-         
+      <div className="box-principal flex-cl align-center content-start ">
+        <div className="display-flex align-stretch width ">
+          <button >
+            <NavLink className="btn btn-white" to="/consulta/cadastro" exact >Agendar Consulta</NavLink>
+          </button>
+        </div>
+         <div className="box-secundario flex-cl">
         {exibirDados.map((consulta, index) => (
           <ConsultaDetalhes key={index} consulta={consulta} />
         ))}      
-        
+         </div>
+         <div className="btn-paginacao flex flex-row">
+            <ReactPaginate 
+            previousLabel={"<<Anterior"}
+            nextLabel={"Próximo>>"}
+            pageCount={pageCount}
+            onPageChange={handlePaginacao}
+            />
+         </div>
         </div>
-        <ReactPaginate
-        previousLabel={"<<Anterior"}
-        nextLabel={"Próximo>>"}
-        pageCount={pageCount}
-        onPageChange={handlePaginacao}
-        />
-      </>
     );
   }
   

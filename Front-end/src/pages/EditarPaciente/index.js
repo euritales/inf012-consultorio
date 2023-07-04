@@ -68,6 +68,9 @@ const EditarPaciente = () => {
   return (
     <div>
       <h2>Editar Paciente</h2>
+      <div className="box-principal flex-cl align-center content-start ">
+      <div className="container-form-paciente">
+      <div className="container-register-paciente">
       <form className="patient-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="container-unic-input">
           <label htmlFor="nome">Nome</label>
@@ -115,11 +118,16 @@ const EditarPaciente = () => {
           <input type="text" id="cep" {...register('endereco.cep')} />
         </div>
         </div>
-        <button className="btn " type="submit">Cadastrar</button>
-        <button onClick={()=> navigate('/paciente')}>Voltar</button>
-
-      </form>
-    </div>
+        <div className='flex space-between'>
+          <button className="btn btn-white" onClick={()=> navigate('/paciente')}>Voltar</button>
+          <button className="btn btn-white" type="submit">Salvar</button>
+        </div>
+    
+        </form>
+      </div>
+      </div>
+      </div>
+    </div>  
   );
 };
 

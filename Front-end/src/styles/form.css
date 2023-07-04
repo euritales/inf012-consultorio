@@ -4,7 +4,6 @@ body {
 
 .container-form{
   display: flex;
-  border: 3px solid red;
   height: 800px;
   justify-content: center;
   align-items: center;
@@ -16,6 +15,12 @@ body {
 }
 .container-unic-input input {
   width: 512px;
+}
+.container-unic-input select {
+  padding: 4px;
+  font-size: 15px;
+  border: 1px solid black;
+  color: black;
 }
 
 .container-double-form {

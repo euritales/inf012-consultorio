@@ -5,12 +5,12 @@
     font-size: 14px;
     text-align: center;
     padding: 11px 60px;
-    border-radius: 20px;
+    border-radius: 10px;
     font-weight: 600;
   }
   
   .btn-blue {
-    background-color: #1351B4;
+    background-color: #4BB1FB;
     color: #f7f7f7;
     border: none;
     cursor: pointer;
@@ -22,9 +22,9 @@
     border: none;
   }
   
-  .btn-white {
+  .btn-white{
     background: #FFFFFF;
-    border-radius: 16px;
+    border-radius: 10px;
     color: #1351B4;
     cursor: pointer;
     border: 1.5px solid #1351B4;
@@ -32,8 +32,40 @@
 
   .btn-white:hover {
     background: #1351B4;
-    border-radius: 16px;
+    border-radius: 10px;
     color: #FFFFFF;
     cursor: pointer;
     border: 1.5px solid #1351B4;
   }
+
+  .btn-menu{
+    height: 50px;
+    width: 250px;
+  }
+
+
+.btn-paginacao ul{
+    display: flex;
+    flex-direction:row;
+}
+.btn-paginacao li{
+    margin: 10px;
+    padding: 0;
+    background-color:#FFF;
+    color: #1351B4;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1.5px solid #1351B4;
+}
+.btn-paginacao a{
+  padding: 15px;
+}
+
+.btn-paginacao li:hover{
+    margin: 10px;
+    background: #1351B4;
+    color: #FFF;
+    cursor: pointer;
+    border-radius: 5px;
+}
+

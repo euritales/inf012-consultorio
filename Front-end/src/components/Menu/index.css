@@ -1,38 +1,58 @@
+.menu img{
+  width: 60px;
+  height: 60px;
+  margin: 5px 0px 0px 20px;
+  border-radius: 50%;
+}
+.menu {
+  display: flex;
+ 
+}
+.menu-bar {
+  display: flex;
+  flex-direction:row;
+  overflow: hidden;
+}
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 1px;
-    overflow: hidden;
-  }
+.btn-menu {
+  display: block;
+  color: #111;
+  border-radius: 10px;
+  text-align: center;
+  padding: 14px 16px;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px;
+  background-color: #4BB1FB
   
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: #111;
-    border-radius: 10px;
-    text-align: center;
-    padding: 14px 16px;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 10px;
-    margin: 10px;
-    background-color: #4BB1FB
-    
-  }
-  
-  li a:hover {
-    color: #f0f0f0;
-    background-color: #1351B4;
-  }
+}
 
-  .menu-button {
-    background-color: #f0f0f0;
-  }
-  .active {
-    color: #f0f0f0;
-    background-color: #1351B4;
-  }
+.btn-menu:hover {
+  color: #f0f0f0;
+  background-color: #1351B4;
+}
+
+.menu-button {
+  background-color: #f0f0f0;
+}
+.active {
+  color: #f0f0f0;
+  background-color: #1351B4;
+}
+
+
+.box-principal{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  height: 100vh;
+}
+
+.box-secundario {
+  display: flex;
+  height: 70%;
+  width: 70%;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: aliceblue;
+}

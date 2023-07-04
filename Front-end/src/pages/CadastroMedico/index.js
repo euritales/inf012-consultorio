@@ -42,6 +42,7 @@ const CadastroMedico = () => {
     };
   
     return (
+  <div className="box-principal flex-cl align-center content-start ">
     <div className="container-form-paciente">
       <div className="container-register-paciente">
       <form className="patient-form" onSubmit={handleSubmit(onSubmit)}>
@@ -102,6 +103,7 @@ const CadastroMedico = () => {
         
         <button className="btn btn-white" type="submit">Cadastrar</button>
       </form>
+      </div>
       </div>
       </div>
     );

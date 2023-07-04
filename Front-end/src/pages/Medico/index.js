@@ -1,9 +1,7 @@
 
 // import { toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
-// import { toast } from "react-toastify"
-// import 'react-toastify/dist/ReactToastify.css';
-import './index.css'
+import "./index.css"
 import '../../styles/global.css'
 import '../../styles/form.css'
 import api from "../../services/api";
@@ -42,22 +40,26 @@ const Medico = () => {
   }, []);
 
    return(
-    <>
-    <ul>
-      <li><NavLink to="/medico/cadastro" exact className="btn-redirec">Cadastrar Medico</NavLink></li>
-    </ul>
-    <div className="consultaBox">
+      <div className="box-principal flex-cl align-center content-start ">
+        <div className="display-flex align-stretch width ">
+          <button >
+            <NavLink className="btn btn-white" to="/medico/cadastro" exact >Cadastrar Medico</NavLink>
+            </button>
+        </div>
+        <div className="box-secundario flex-cl">
         {exibirDados.map((medico, index) => (
           <MedicoDetalhes key={index} medico={medico} />
         ))}      
       </div>
+      <div className="btn-paginacao flex flex-row">
       <ReactPaginate
       previousLabel={"<<Anterior"}
       nextLabel={"Próximo>>"}
       pageCount={pageCount}
       onPageChange={handlePaginacao}
-    />
-    </>
+      />
+      </div>
+    </div>
 
     );
 };

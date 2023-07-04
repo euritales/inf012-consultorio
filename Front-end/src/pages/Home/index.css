@@ -1,14 +1,23 @@
-.gallery {
+
+.box-principal{
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  margin-top: 100px;
+  height: 100vh;
+}
+
+.box-secundario {
+  display: flex;
+  height: 70%;
+  width: 70%;
+  align-items: center;
+  justify-content: space-evenly;
   background-color: aliceblue;
 }
 
 .gallery img {
   width: 250px;
   height: 250px;
-  margin: 15px;
   cursor: pointer;
   border-radius: 8px;
 }
@@ -36,13 +45,23 @@
   display: flex;
 }
 
-.botao {
-  background-color: #0076ba;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
+.btn-home{
+  display: flex;
+  justify-content: center;
+  /* color: #111; */
+  color: #1351B4;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1.5px solid #1351B4;
+  padding: 14px 16px;
+  font-weight: bold;
+  /* background-color: #4BB1FB; */
+  background-color: #FFFFFF;
+}
+
+.btn-home:hover {
+  background: #1351B4;
+  border-radius: 10px;
+  color: #FFFFFF;
+  cursor: pointer;
 }
