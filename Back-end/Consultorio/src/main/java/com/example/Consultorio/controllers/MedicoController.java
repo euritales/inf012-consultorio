@@ -45,6 +45,7 @@ public class MedicoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity cadastrarMedico(@RequestBody MedicoEntity medicoEntity) {
+        medicoService.cadastrarMedico(medicoEntity);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 //    @PutMapping("/{id}")
