@@ -69,7 +69,7 @@ const CadastroPaciente = () => {
         <div className="container-double-form">
         <div>
           <label htmlFor="logradouro">Logradouro</label>
-          <input type="text" id="logradouro" {...register('endereco.logradouro')} />
+          <input type="text" id="logradouro" {...register('endereco.logradouro', {required: true})} />
         </div>
         <div>
           <label htmlFor="numero">Número</label>
@@ -81,19 +81,19 @@ const CadastroPaciente = () => {
         </div>
         <div>
           <label htmlFor="bairro">Bairro</label>
-          <input type="text" id="bairro" {...register('endereco.bairro')} />
+          <input type="text" id="bairro" {...register('endereco.bairro', {required: true})} />
         </div>
         <div>
           <label htmlFor="cidade">Cidade</label>
-          <input type="text" id="cidade" {...register('endereco.cidade')} />
+          <input type="text" id="cidade" {...register('endereco.cidade', {required: true})} />
         </div>
         <div>
           <label htmlFor="uf">UF</label>
-          <input type="text" id="uf" {...register('endereco.uf')} />
+          <input type="text" id="uf" {...register('endereco.uf', {required: true})} />
         </div>
         <div>
           <label htmlFor="cep">CEP</label>
-          <input type="text" id="cep" {...register('endereco.cep')} />
+          <input type="text" id="cep" {...register('endereco.cep', {required: true})} />
         </div>
         </div>
         <button className="btn btn-white" type="submit">Cadastrar</button>

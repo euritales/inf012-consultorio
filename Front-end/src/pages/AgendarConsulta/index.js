@@ -60,7 +60,6 @@ const AgendarConsulta = () => {
         dataHora: data.dataHora
       };
     
-      //Correcao
       try {
         const response = await api.post("/api/consultas", body);
         toast.success("Consulta agendada com sucesso!");
@@ -90,8 +89,6 @@ const AgendarConsulta = () => {
               className="select"
             >
               <option 
-              //   style={{ width: '222px',
-              // border: '2px, solid black'}}
               value="" required disabled selected hidden>
                 Selecione um Paciente
               </option>
@@ -104,12 +101,9 @@ const AgendarConsulta = () => {
           </div>
           <div className="container-unic-input mg-x-m ">
             <label 
-            // style={{ width: '222px',
-            // border: '2px, solid black'}}
+       
             htmlFor="medicos">Medicos</label>
               <select
-                // style={{ width: '222px',
-                //         border: '2px, solid black'}}
                 {...register("medico")}
                 id="medico_id"
                 className="select"

@@ -40,7 +40,9 @@
   max-height: 80%;
   object-fit: contain;
 }
-
+.box-img{
+  margin: 20px;
+}
 .modal.open {
   display: flex;
 }

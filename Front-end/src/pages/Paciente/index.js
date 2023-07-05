@@ -1,6 +1,3 @@
-
-// import { toast } from "react-toastify"
-// import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from 'react';
 import PacienteDetalhes from '../../components/PacienteDetalhes';
 import api from "../../services/api";
