@@ -48,12 +48,7 @@ public class MedicoController {
         medicoService.cadastrarMedico(medicoEntity);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-//    @PutMapping("/{id}")
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public ResponseEntity atualizarMedico(@PathVariable Long id, @RequestBody MedicoEntity medicoEntity) {
-//        medicoService.atualizarMedico(id, medicoEntity);
-//        return ResponseEntity.noContent().build();
-//    }
+
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
